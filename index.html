@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tasties | Minimalist Recipe Directory</title>
+    <style>
+        /* =========================================
+           UI FUNCTIONALITY: iOS MINIMALIST DESIGN
+           ========================================= */
+        :root {
+            /* iOS Color Palette */
+            --bg-color: #F2F2F7;
+            --card-bg: #FFFFFF;
+            --text-primary: #1C1C1E;
+            --text-secondary: #8E8E93;
+            --accent: #FF9500; /* iOS Orange for food/appetite */
+            --accent-active: #E58600;
+            --separator: #C6C6C8;
+            --nav-bg: rgba(255, 255, 255, 0.85);
+            --button-blue: #004e89; /* Previous theme button color */
+        }
+
+        body.dark-mode {
+            --bg-color: #000000;
+            --card-bg: #1C1C1E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #EBEBF5;
+            --separator: #38383A;
+            --nav-bg: rgba(28, 28, 30, 0.85);
+        }
+
+        body {
+            /* Native iOS Font Stack */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* iOS Style Sticky Header */
+        header {
+            position: sticky;
+            top: 0;
+            background-color: var(--nav-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 0.5px solid var(--separator);
+            z-index: 1000;
+        }
+
+        .logo { 
+            margin: 0; 
+            font-size: 2rem; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+            cursor: pointer; 
+            color: var(--accent); 
+        }
+        
+        /* Restored Previous Theme Button Style */
+        .theme-switch {
+            background: var(--button-blue); 
+            color: white;
+            border: none; 
+            padding: 10px 15px; 
+            border-radius: 30px;
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 0.9rem;
+            transition: transform 0.2s;
+        }
+        .theme-switch:hover { 
+            transform: scale(1.05); 
+        }
+
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 24px 20px 60px; 
+        }
+        
+        /* View Controller System */
+        .view { display: none; animation: iosFadeIn 0.4s cubic-bezier(0.25, 0.1, 0.25, 1); }
+        .view.active { display: block; }
+        @keyframes iosFadeIn { 
+            from { opacity: 0; transform: scale(0.98); } 
+            to { opacity: 1; transform: scale(1); } 
+        }
+
+        /* Large iOS Headings */
+        h1.large-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin: 0 0 32px 0;
+            line-height: 1.2;
+        }
+
+        /* iOS Navigation Controls */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .btn-back {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.1rem;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 0;
+        }
+        .btn-back::before {
+            content: '‹';
+            font-size: 1.8rem;
+            line-height: 1;
+            margin-bottom: 2px;
+        }
+
+        /* Minimalist Cards */
+        .grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 16px; 
+        }
+        
+        .card {
+            background: var(--card-bg); 
+            padding: 24px 20px; 
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            text-align: center;
+            cursor: pointer; 
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        
+        .card:active {
+            transform: scale(0.96);
+            filter: brightness(0.95);
+        }
+        
+        .card h2 { font-size: 3rem; margin: 0 0 12px 0; line-height: 1; }
+        .card h3 { margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 600; }
+        .card p { margin: 0; color: var(--text-secondary); font-size: 0.9rem; }
+
+        /* Recipe Details */
+        .recipe-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            margin-bottom: 12px; 
+        }
+        .recipe-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: -0.5px;
+        }
+        
+        .fav-btn { 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            color: var(--separator); 
+            user-select: none;
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .fav-btn.active { color: #FF3B30; transform: scale(1.2); }
+        
+        .recipe-meta { 
+            display: flex; 
+            gap: 12px; 
+            margin-bottom: 32px; 
+            flex-wrap: wrap; 
+        }
+        .recipe-meta span { 
+            background: var(--card-bg); 
+            padding: 6px 12px; 
+            border-radius: 8px; 
+            font-weight: 500; 
+            font-size: 0.85rem; 
+            color: var(--text-secondary);
+            border: 0.5px solid var(--separator);
+        }
+        
+        h3.section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0 0 16px 0;
+            letter-spacing: -0.3px;
+        }
+
+        /* iOS Interactive Lists */
+        .list-group {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 32px;
+        }
+        
+        .ingredient-item {
+            display: flex; 
+            align-items: center; 
+            gap: 16px;
+            padding: 16px; 
+            border-bottom: 0.5px solid var(--separator);
+            transition: background-color 0.2s;
+        }
+        .ingredient-item:last-child { border-bottom: none; }
+        
+        .ingredient-item input[type="checkbox"] { 
+            width: 22px; 
+            height: 22px; 
+            cursor: pointer; 
+            accent-color: var(--accent); 
+            margin: 0;
+        }
+        .ingredient-item span { font-size: 1rem; transition: opacity 0.2s, color 0.2s; }
+        .checked span { text-decoration: line-through; opacity: 0.4; }
+
+        /* Clean Instructions */
+        ol.instructions-list {
+            padding-left: 20px;
+            margin: 0;
+        }
+        ol.instructions-list li {
+            margin-bottom: 16px;
+            padding-left: 8px;
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Minimal Loading Spinner */
+        #loader { 
+            display: none; 
+            text-align: center; 
+            padding: 60px 0; 
+            color: var(--text-secondary);
+        }
+        .spinner { 
+            display: inline-block; 
+            width: 30px; 
+            height: 30px; 
+            border: 3px solid var(--separator); 
+            border-radius: 50%; 
+            border-top-color: var(--text-secondary); 
+            animation: spin 1s linear infinite; 
+            margin-bottom: 16px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="navigateTo('home')">Tasties</div>
+        <button class="theme-switch" onclick="toggleDarkMode()">🌗 Toggle Dark Mode</button>
+    </header>
+
+    <div class="container">
+        
+        <div id="loader">
+            <div class="spinner"></div><br>
+            <span style="font-size: 0.9rem;">Loading...</span>
+        </div>
+
+        <div id="home" class="view active">
+            <h1 class="large-title">What are you craving today?</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('cat-pasta')">
+                    <h2>🍝</h2>
+                    <h3>Pasta</h3>
+                    <p>1 Recipe</p>
+                </div>
+                <div class="card" onclick="loadView('cat-salads')">
+                    <h2>🥗</h2>
+                    <h3>Salads</h3>
+                    <p>1 Recipe</p>
+                </div>
+                <div class="card" onclick="loadView('cat-desserts')">
+                    <h2>🍰</h2>
+                    <h3>Desserts</h3>
+                    <p>1 Recipe</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-pasta" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('home')">Home</button>
+            </div>
+            <h1 class="large-title">Pasta</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('rec-carbonara')">
+                    <h2>🍳</h2>
+                    <h3>Carbonara</h3>
+                    <p>15 mins</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-salads" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('home')">Home</button>
+            </div>
+            <h1 class="large-title">Salads</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('rec-quinoa')">
+                    <h2>🥑</h2>
+                    <h3>Greek Quinoa</h3>
+                    <p>20 mins</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-desserts" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('home')">Home</button>
+            </div>
+            <h1 class="large-title">Desserts</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('rec-tiramisu')">
+                    <h2>☕</h2>
+                    <h3>Classic Tiramisu</h3>
+                    <p>40 mins</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="rec-carbonara" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('cat-pasta')">Pasta</button>
+            </div>
+            
+            <div class="recipe-header">
+                <h1>Spaghetti Carbonara</h1>
+                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
+            </div>
+            
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
+                An authentic, creamy Italian classic made with just 4 main ingredients.
+            </p>
+            
+            <div class="recipe-meta">
+                <span>⏱ 15 mins</span>
+                <span>👨‍🍳 Easy</span>
+                <span>🍽 2 servings</span>
+            </div>
+            
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)">
+                    <span>200g Spaghetti</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)">
+                    <span>100g Guanciale or Pancetta</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)">
+                    <span>2 Large Eggs</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)">
+                    <span>50g Pecorino Romano cheese</span>
+                </label>
+            </div>
+
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Boil a large pot of salted water. Cook the spaghetti until al dente.</li>
+                <li>While pasta cooks, fry the guanciale in a pan until crispy.</li>
+                <li>In a bowl, whisk the eggs and grated cheese together.</li>
+                <li>Drain pasta (save a little water), add to the pan with guanciale. Remove from heat.</li>
+                <li>Quickly stir in the egg mixture, adding pasta water until a creamy sauce forms. Serve immediately!</li>
+            </ol>
+        </div>
+
+        <div id="rec-quinoa" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('cat-salads')">Salads</button>
+            </div>
+            
+            <div class="recipe-header">
+                <h1>Greek Quinoa</h1>
+                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
+            </div>
+            
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
+                A refreshing, protein-packed salad topped with a zesty lemon-olive oil dressing.
+            </p>
+            
+            <div class="recipe-meta">
+                <span>⏱ 20 mins</span>
+                <span>👨‍🍳 Easy</span>
+                <span>🍽 4 servings</span>
+            </div>
+            
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 cup dry Quinoa</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 Cucumber, diced</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 cup Cherry Tomatoes</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>1/2 cup Feta Cheese</span>
+                </label>
+            </div>
+
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Rinse quinoa and boil in 2 cups of water for 10-12 minutes until fluffy. Let cool.</li>
+                <li>Chop the cucumber and cherry tomatoes.</li>
+                <li>In a large bowl, combine the cooled quinoa, vegetables, and feta cheese.</li>
+                <li>Drizzle with olive oil, lemon juice, salt, and pepper. Toss well and serve.</li>
+            </ol>
+        </div>
+
+        <div id="rec-tiramisu" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('cat-desserts')">Desserts</button>
+            </div>
+            
+            <div class="recipe-header">
+                <h1>Classic Tiramisu</h1>
+                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
+            </div>
+            
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
+                An elegant, no-bake Italian dessert featuring espresso-soaked ladyfingers.
+            </p>
+            
+            <div class="recipe-meta">
+                <span>⏱ 40 mins</span>
+                <span>👨‍🍳 Medium</span>
+                <span>🍽 8 servings</span>
+            </div>
+            
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 cup strong Espresso</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>24 Ladyfinger cookies</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>16 oz Mascarpone</span>
+                </label>
+                <label class="ingredient-item">
+                    <input type="checkbox" onchange="toggleStrike(this)"><span>Cocoa powder for dusting</span>
+                </label>
+            </div>
+
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Whisk egg yolks and sugar until thick. Fold in the mascarpone cheese until smooth.</li>
+                <li>Quickly dip half of the ladyfingers into the espresso and arrange in a dish.</li>
+                <li>Spread half the mascarpone mixture over the ladyfingers. Repeat layers.</li>
+                <li>Cover and refrigerate for at least 4 hours. Dust with cocoa powder.</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        // Smooth Simulated Loading
+        function loadView(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById('loader').style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById(viewId).classList.add('active');
+                window.scrollTo(0, 0);
+            }, 300); // Faster, iOS-like snappy load
+        }
+
+        // Instant Back Navigation
+        function navigateTo(viewId) {
+            document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+            document.getElementById(viewId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Interactive List Striking
+        function toggleStrike(checkbox) {
+            const container = checkbox.closest('.ingredient-item');
+            if (checkbox.checked) {
+                container.classList.add('checked');
+            } else {
+                container.classList.remove('checked');
+            }
+        }
+
+        // Heart Icon Toggle
+        function toggleFavorite(element) {
+            element.classList.toggle('active');
+        }
+
+        // Dark Mode Control
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+    </script>
+</body>
+</html>
