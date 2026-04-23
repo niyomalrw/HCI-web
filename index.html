@@ -298,57 +298,101 @@
         <div id="home" class="view active">
             <h1 class="large-title">What are you craving today?</h1>
             <div class="grid">
-                <div class="card" onclick="loadView('cat-pasta')">
-                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80" alt="Pasta" class="card-img">
+                <div class="card" onclick="loadView('cat-breakfast')">
+                    <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?w=600&q=80" alt="Breakfast" class="card-img">
                     <div class="card-content">
-                        <h3>Pasta</h3>
-                        <p>1 Recipe</p>
+                        <h3>Breakfast</h3>
+                        <p>2 Recipes</p>
                     </div>
                 </div>
-                <div class="card" onclick="loadView('cat-salads')">
-                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80" alt="Salad" class="card-img">
+                <div class="card" onclick="loadView('cat-lunch')">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Lunch" class="card-img">
                     <div class="card-content">
-                        <h3>Salads</h3>
-                        <p>1 Recipe</p>
+                        <h3>Lunch</h3>
+                        <p>2 Recipes</p>
+                    </div>
+                </div>
+                <div class="card" onclick="loadView('cat-dinner')">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=600&q=80" alt="Dinner" class="card-img">
+                    <div class="card-content">
+                        <h3>Dinner</h3>
+                        <p>2 Recipes</p>
                     </div>
                 </div>
                 <div class="card" onclick="loadView('cat-desserts')">
-                    <img src="https://images.unsplash.com/photo-1550617931-e17a7b70dce2?auto=format&fit=crop&w=600&q=80" alt="Dessert" class="card-img">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80" alt="Desserts" class="card-img">
                     <div class="card-content">
                         <h3>Desserts</h3>
-                        <p>1 Recipe</p>
+                        <p>2 Recipes</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="cat-pasta" class="view">
+        <div id="cat-breakfast" class="view">
             <div class="nav-controls">
                 <button class="btn-back" onclick="navigateTo('home')">Home</button>
             </div>
-            <h1 class="large-title">Pasta</h1>
+            <h1 class="large-title">Breakfast</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('rec-pancakes')">
+                    <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=600&q=80" alt="Pancakes" class="card-img">
+                    <div class="card-content">
+                        <h3>Fluffy Pancakes</h3>
+                        <p>20 mins • Sweet</p>
+                    </div>
+                </div>
+                <div class="card" onclick="loadView('rec-avocado-toast')">
+                    <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&q=80" alt="Avocado Toast" class="card-img">
+                    <div class="card-content">
+                        <h3>Avocado Toast</h3>
+                        <p>10 mins • Savory</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-lunch" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('home')">Home</button>
+            </div>
+            <h1 class="large-title">Lunch</h1>
+            <div class="grid">
+                <div class="card" onclick="loadView('rec-quinoa')">
+                    <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=600&q=80" alt="Quinoa Salad" class="card-img">
+                    <div class="card-content">
+                        <h3>Greek Quinoa</h3>
+                        <p>20 mins • Healthy</p>
+                    </div>
+                </div>
+                <div class="card" onclick="loadView('rec-sandwich')">
+                    <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=600&q=80" alt="Club Sandwich" class="card-img">
+                    <div class="card-content">
+                        <h3>Club Sandwich</h3>
+                        <p>15 mins • Classic</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="cat-dinner" class="view">
+            <div class="nav-controls">
+                <button class="btn-back" onclick="navigateTo('home')">Home</button>
+            </div>
+            <h1 class="large-title">Dinner</h1>
             <div class="grid">
                 <div class="card" onclick="loadView('rec-carbonara')">
-                    <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80" alt="Carbonara" class="card-img">
+                    <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=600&q=80" alt="Carbonara" class="card-img">
                     <div class="card-content">
                         <h3>Spaghetti Carbonara</h3>
                         <p>15 mins • Italian</p>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <div id="cat-salads" class="view">
-            <div class="nav-controls">
-                <button class="btn-back" onclick="navigateTo('home')">Home</button>
-            </div>
-            <h1 class="large-title">Salads</h1>
-            <div class="grid">
-                <div class="card" onclick="loadView('rec-caesar')">
-                    <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80" alt="Caesar Salad" class="card-img">
+                <div class="card" onclick="loadView('rec-salmon')">
+                    <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=600&q=80" alt="Baked Salmon" class="card-img">
                     <div class="card-content">
-                        <h3>Classic Caesar Salad</h3>
-                        <p>15 mins • Quick & Easy</p>
+                        <h3>Baked Salmon</h3>
+                        <p>30 mins • Seafood</p>
                     </div>
                 </div>
             </div>
@@ -361,57 +405,123 @@
             <h1 class="large-title">Desserts</h1>
             <div class="grid">
                 <div class="card" onclick="loadView('rec-tiramisu')">
-                    <img src="https://ichef.bbc.co.uk/ace/standard/1600/food/recipes/tiramisu_affogato_41821_16x9.jpg.webp" alt="Tiramisu" class="card-img">
+                    <img src="tiramisu.png" alt="Tiramisu" class="card-img">
                     <div class="card-content">
                         <h3>Classic Tiramisu</h3>
                         <p>40 mins • No-Bake</p>
                     </div>
                 </div>
+                <div class="card" onclick="loadView('rec-brownies')">
+                    <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=600&q=80" alt="Fudge Brownies" class="card-img">
+                    <div class="card-content">
+                        <h3>Fudge Brownies</h3>
+                        <p>45 mins • Baked</p>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div id="rec-carbonara" class="view">
-            <div class="nav-controls">
-                <button class="btn-back" onclick="navigateTo('cat-pasta')">Pasta</button>
-            </div>
-            
-            <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=800&q=80" alt="Spaghetti Carbonara" class="recipe-hero-img">
-
-            <div class="recipe-header">
-                <h1>Spaghetti Carbonara</h1>
-                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
-            </div>
-            
-            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
-                An authentic, creamy Italian classic made with just 4 main ingredients.
-            </p>
-            
-            <div class="recipe-meta">
-                <span>⏱ 15 mins</span>
-                <span>👨‍🍳 Easy</span>
-                <span>🍽 2 servings</span>
-            </div>
-            
+        <!-- Recipe Details (8 Recipes) -->
+        <div id="rec-pancakes" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-breakfast')">Breakfast</button></div>
+            <img src="https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=800&q=80" alt="Pancakes" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Fluffy Pancakes</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">Classic, thick, and fluffy homemade pancakes.</p>
+            <div class="recipe-meta"><span>⏱ 20 mins</span><span>👨‍🍳 Easy</span><span>🍽 4 servings</span></div>
             <h3 class="section-title">Ingredients</h3>
             <div class="list-group">
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)">
-                    <span>200g Spaghetti</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)">
-                    <span>100g Guanciale or Pancetta</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)">
-                    <span>2 Large Eggs</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)">
-                    <span>50g Pecorino Romano cheese</span>
-                </label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 1/2 cups All-purpose flour</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>3 1/2 tsp Baking powder</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 1/4 cups Milk</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 Egg</span></label>
             </div>
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Sift together flour, baking powder, and a pinch of salt.</li>
+                <li>Make a well in the center and pour in milk, egg, and melted butter; mix until smooth.</li>
+                <li>Heat a lightly oiled griddle or pan over medium-high heat.</li>
+                <li>Pour batter onto the griddle, using approximately 1/4 cup for each pancake. Brown on both sides.</li>
+            </ol>
+        </div>
 
+        <div id="rec-avocado-toast" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-breakfast')">Breakfast</button></div>
+            <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&q=80" alt="Avocado Toast" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Avocado Toast</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">A quick and nutritious way to start your day.</p>
+            <div class="recipe-meta"><span>⏱ 10 mins</span><span>👨‍🍳 Easy</span><span>🍽 1 serving</span></div>
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 slices Sourdough Bread</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 Ripe Avocado</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>Pinch of Red Pepper Flakes</span></label>
+            </div>
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Toast the bread until golden brown.</li>
+                <li>Mash the avocado with a fork and season with salt, pepper, and a squeeze of lime.</li>
+                <li>Spread the mashed avocado on the toasted bread.</li>
+                <li>Top with red pepper flakes and a drizzle of olive oil.</li>
+            </ol>
+        </div>
+
+        <div id="rec-quinoa" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-lunch')">Lunch</button></div>
+            <img src="https://images.unsplash.com/photo-1505253758473-96b7015fcd40?w=800&q=80" alt="Quinoa Salad" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Greek Quinoa</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">A refreshing, protein-packed salad topped with a zesty lemon-olive oil dressing.</p>
+            <div class="recipe-meta"><span>⏱ 20 mins</span><span>👨‍🍳 Easy</span><span>🍽 4 servings</span></div>
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 cup dry Quinoa</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 Cucumber, diced</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 cup Cherry Tomatoes</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1/2 cup Feta Cheese</span></label>
+            </div>
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Rinse quinoa and boil in 2 cups of water for 10-12 minutes until fluffy. Let cool.</li>
+                <li>Chop the cucumber and cherry tomatoes.</li>
+                <li>In a large bowl, combine the cooled quinoa, vegetables, and feta cheese.</li>
+                <li>Drizzle with olive oil, lemon juice, salt, and pepper. Toss well and serve.</li>
+            </ol>
+        </div>
+
+        <div id="rec-sandwich" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-lunch')">Lunch</button></div>
+            <img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=800&q=80" alt="Club Sandwich" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Club Sandwich</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">A hearty double-decker sandwich with turkey, bacon, and lettuce.</p>
+            <div class="recipe-meta"><span>⏱ 15 mins</span><span>👨‍🍳 Easy</span><span>🍽 1 serving</span></div>
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>3 slices Bread</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 slices Turkey</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 slices Bacon, cooked</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>Lettuce and Tomato</span></label>
+            </div>
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Toast the three slices of bread.</li>
+                <li>Spread mayo on one slice, top with turkey, lettuce, and tomato.</li>
+                <li>Add the second slice of bread, mayo, bacon, and more lettuce.</li>
+                <li>Top with the final slice of bread, cut into quarters, and secure with toothpicks.</li>
+            </ol>
+        </div>
+
+        <div id="rec-carbonara" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-dinner')">Dinner</button></div>
+            <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&q=80" alt="Spaghetti Carbonara" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Spaghetti Carbonara</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">An authentic, creamy Italian classic made with just 4 main ingredients.</p>
+            <div class="recipe-meta"><span>⏱ 15 mins</span><span>👨‍🍳 Easy</span><span>🍽 2 servings</span></div>
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>200g Spaghetti</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>100g Guanciale or Pancetta</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 Large Eggs</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>50g Pecorino Romano cheese</span></label>
+            </div>
             <h3 class="section-title">Instructions</h3>
             <ol class="instructions-list">
                 <li>Boil a large pot of salted water. Cook the spaghetti until al dente.</li>
@@ -422,97 +532,69 @@
             </ol>
         </div>
 
-        <div id="rec-caesar" class="view">
-            <div class="nav-controls">
-                <button class="btn-back" onclick="navigateTo('cat-salads')">Salads</button>
-            </div>
-            
-            <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=800&q=80" alt="Caesar Salad" class="recipe-hero-img">
-
-            <div class="recipe-header">
-                <h1>Classic Caesar Salad</h1>
-                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
-            </div>
-            
-            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
-                A crisp, creamy, and savory classic that comes together in minutes.
-            </p>
-            
-            <div class="recipe-meta">
-                <span>⏱ 15 mins</span>
-                <span>👨‍🍳 Easy</span>
-                <span>🍽 2 servings</span>
-            </div>
-            
+        <div id="rec-salmon" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-dinner')">Dinner</button></div>
+            <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=800&q=80" alt="Baked Salmon" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Baked Salmon</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">Simple, tender, and flaky oven-baked salmon.</p>
+            <div class="recipe-meta"><span>⏱ 30 mins</span><span>👨‍🍳 Easy</span><span>🍽 2 servings</span></div>
             <h3 class="section-title">Ingredients</h3>
             <div class="list-group">
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 large head Romaine lettuce</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 cup Garlic Croutons</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>1/2 cup Parmesan cheese, shaved</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>1/3 cup Caesar dressing</span>
-                </label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 Salmon fillets</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 Lemon, sliced</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 tbsp Olive oil</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>Garlic and Herbs</span></label>
             </div>
-
             <h3 class="section-title">Instructions</h3>
             <ol class="instructions-list">
-                <li>Wash and thoroughly dry the romaine lettuce leaves.</li>
-                <li>Chop or tear the lettuce into bite-sized pieces and place in a large bowl.</li>
-                <li>Drizzle the Caesar dressing over the lettuce and toss until evenly coated.</li>
-                <li>Sprinkle the croutons and shaved Parmesan cheese on top. Serve immediately.</li>
+                <li>Preheat oven to 400°F (200°C).</li>
+                <li>Place salmon on a baking sheet lined with foil.</li>
+                <li>Drizzle with olive oil, season with salt, pepper, garlic, and herbs. Top with lemon slices.</li>
+                <li>Bake for 12-15 minutes or until salmon easily flakes with a fork.</li>
             </ol>
         </div>
 
         <div id="rec-tiramisu" class="view">
-            <div class="nav-controls">
-                <button class="btn-back" onclick="navigateTo('cat-desserts')">Desserts</button>
-            </div>
-            
-            <img src="https://ichef.bbc.co.uk/ace/standard/1600/food/recipes/tiramisu_affogato_41821_16x9.jpg.webp" alt="Classic Tiramisu" class="recipe-hero-img">
-
-            <div class="recipe-header">
-                <h1>Classic Tiramisu</h1>
-                <span class="fav-btn" onclick="toggleFavorite(this)">♥</span>
-            </div>
-            
-            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">
-                An elegant, no-bake Italian dessert featuring espresso-soaked ladyfingers.
-            </p>
-            
-            <div class="recipe-meta">
-                <span>⏱ 40 mins</span>
-                <span>👨‍🍳 Medium</span>
-                <span>🍽 8 servings</span>
-            </div>
-            
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-desserts')">Desserts</button></div>
+            <img src="tiramisu.png" alt="Classic Tiramisu" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Classic Tiramisu</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">An elegant, no-bake Italian dessert featuring espresso-soaked ladyfingers.</p>
+            <div class="recipe-meta"><span>⏱ 40 mins</span><span>👨‍🍳 Medium</span><span>🍽 8 servings</span></div>
             <h3 class="section-title">Ingredients</h3>
             <div class="list-group">
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>1 cup strong Espresso</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>24 Ladyfinger cookies</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>16 oz Mascarpone</span>
-                </label>
-                <label class="ingredient-item">
-                    <input type="checkbox" onchange="toggleStrike(this)"><span>Cocoa powder for dusting</span>
-                </label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 cup strong Espresso</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>24 Ladyfinger cookies</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>16 oz Mascarpone</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>Cocoa powder for dusting</span></label>
             </div>
-
             <h3 class="section-title">Instructions</h3>
             <ol class="instructions-list">
                 <li>Whisk egg yolks and sugar until thick. Fold in the mascarpone cheese until smooth.</li>
                 <li>Quickly dip half of the ladyfingers into the espresso and arrange in a dish.</li>
                 <li>Spread half the mascarpone mixture over the ladyfingers. Repeat layers.</li>
                 <li>Cover and refrigerate for at least 4 hours. Dust with cocoa powder.</li>
+            </ol>
+        </div>
+
+        <div id="rec-brownies" class="view">
+            <div class="nav-controls"><button class="btn-back" onclick="navigateTo('cat-desserts')">Desserts</button></div>
+            <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=800&q=80" alt="Fudge Brownies" class="recipe-hero-img">
+            <div class="recipe-header"><h1>Fudge Brownies</h1><span class="fav-btn" onclick="toggleFavorite(this)">♥</span></div>
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1.05rem;">Rich, chocolatey fudge brownies with a crinkly top.</p>
+            <div class="recipe-meta"><span>⏱ 45 mins</span><span>👨‍🍳 Easy</span><span>🍽 9 servings</span></div>
+            <h3 class="section-title">Ingredients</h3>
+            <div class="list-group">
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1/2 cup Butter, melted</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1 cup Sugar</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>1/2 cup Cocoa Powder</span></label>
+                <label class="ingredient-item"><input type="checkbox" onchange="toggleStrike(this)"><span>2 Eggs</span></label>
+            </div>
+            <h3 class="section-title">Instructions</h3>
+            <ol class="instructions-list">
+                <li>Preheat oven to 350°F (175°C) and grease an 8x8 inch baking pan.</li>
+                <li>In a bowl, mix melted butter and sugar. Add eggs and beat well.</li>
+                <li>Stir in cocoa powder, a pinch of salt, and a splash of vanilla extract. Fold in flour just until combined.</li>
+                <li>Pour batter into pan and bake for 25-30 minutes. Let cool before slicing.</li>
             </ol>
         </div>
 
